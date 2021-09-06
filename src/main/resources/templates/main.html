@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>ホームページ</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}" href="../static/css/common.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../static/css/main.css">
+</head>
+
+<body>
+<div class="container">
+    <div class="logo">
+        <a th:href="@{/main}"><img th:src="@{/images/login-logo.png}" alt=""></a>
+    </div>
+
+    <div class="header">
+        <h1>メニュー</h1>
+    </div>
+    <div class="main">
+        <ul>
+            <li class="li-First-level"><img th:src="@{/images/square.jpg}" alt="" class="li-img">&nbsp;社員管理
+                <ul>
+                    <li class="li-second-level">
+                        <a th:href="@{/table/basic_information}" href="table/basic_information.html">
+                            <button class="li-btn">基本情報</button>
+                        </a>
+                    </li>
+                    <li class="li-second-level">
+                        <a th:href="@{/table/member_management}">
+                            <button class="li-btn">社員管理</button>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="li-First-level"><img th:src="@{/images/square.jpg}" alt="" class="li-img">&nbsp;経費管理
+                <ul>
+                    <li class="li-second-level">
+                        <button class="li-btn">定期券申請</button>
+                    </li>
+                    <li class="li-second-level">
+                        <button class="li-btn">交通代精算</button>
+                    </li>
+                    <li class="li-second-level">
+                        <button class="li-btn">出張精算</button>
+                    </li>
+                    <li class="li-second-level">
+                        <button class="li-btn">経費精算</button>
+                    </li>
+                </ul>
+            </li>
+            <li class="li-First-level"><img th:src="@{/images/square.jpg}" alt="" class="li-img">&nbsp;休暇管理
+                <ul>
+                    <li class="li-second-level">
+                        <button class="li-btn">休暇申請</button>
+                    </li>
+                    <li class="li-second-level">
+                        <button class="li-btn">休暇管理</button>
+                    </li>
+                </ul>
+            </li>
+            <li class="li-First-level"><img th:src="@{/images/square.jpg}" alt="" class="li-img">&nbsp;勤怠管理
+                <ul>
+                    <li class="li-second-level">
+                        <button class="li-btn">勤怠登録</button>
+                    </li>
+                    <li class="li-second-level">
+                        <button class="li-btn">勤怠管理</button>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="footer">
+        <button class="btn-logout" onclick="logout()">ログアウト</button>
+    </div>
+</div>
+<!--<script src="../static/js/main.js"></script>-->
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

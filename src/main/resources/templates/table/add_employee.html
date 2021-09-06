@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>新規</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/add_employee.css}">
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <a th:href="@{/main}"><img th:src="@{/images/login-logo.png}" alt=""></a>
+    </div>
+    <div class="header">
+        <h1>新規</h1>
+        <button class="btn-header" onclick="submitTable()">保存</button>
+    </div>
+    <div class="main-form">
+        <table id="formList">
+            <tr>
+                <td>社員番号</td>
+                <td>
+                    <div>
+                        <label class="error" id="empNo"> </label><br>
+                        <input type="text" class="input-notnull number six" name="empNo"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>社員氏名</td>
+                <td>
+                    <div>
+                        <label class="error" id="empNameKanji"> </label><br>
+                        <input class="input-notnull twenty" type="text" name="empNameKanji"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>社員ふりがな</td>
+                <td>
+                    <div>
+                        <label class="error" id="empNameFurigana"> </label><br>
+                        <input class="input-notnull twenty" type="text" name="empNameFurigana"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>社員名(ローマ字名)</td>
+                <td>
+                    <div>
+                        <label class="error" id="empNameRoma"> </label><br>
+                        <input class="input-notnull twenty" type="text" name="empNameRoma"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>会社コード</td>
+                <td>
+                    <div>
+                        <label class="error" id="companyCd"> </label><br>
+                        <input class="input-notnull two" type="text" name="companyCd"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>性別</td>
+                <td>
+                    <div>
+                        <label class="radio-label">
+                            <input class="input-radio" type="radio" name="sexFlg" value="男" checked>&nbsp;&nbsp;男性
+                        </label>
+                        <label class="radio-label">
+                            <input class="input-radio" type="radio" name="sexFlg" value="女">&nbsp;&nbsp;女性
+                        </label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>生年月日</td>
+                <td>
+                    <div>
+                        <label class="error" id="birthdayYmd"> </label><br>
+                        <input class="input-notnull number eight" type="text" name="birthdayYmd"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>電話番号</td>
+                <td>
+                    <div>
+                        <label class="error" id="telNoJp"> </label><br>
+                        <input class="phoneJP fifteen" type="text" name="telNoJp" placeholder="070-0000-0000"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>PCメールアドレス</td>
+                <td>
+                    <div>
+                        <label class="error" id="pcMail"> </label><br>
+                        <input class="email twenty" type="text" name="pcMail" placeholder="abc@email.com"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>携帯メールアドレス</td>
+                <td>
+                    <div>
+                        <label class="error" id="telMail"> </label><br>
+                        <input class="email twenty" type="text" name="telMail" placeholder="abc@email.com"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>住所(JP)</td>
+                <td>
+                    <div>
+                        <label class="error" id="addressJp"> </label><br>
+                        <input class="hundred" type="text" name="addressJp"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>社員区分コード</td>
+                <td>
+                    <select id="empDivCd" name="empDivCd">
+                        <option value=" ">選んでください</option>
+                        <option value="00">役員</option>
+                        <option value="01">正社員</option>
+                        <option value="02">契約社員</option>
+                        <option value="03">個人事業主</option>
+                        <option value="04">アルバイト</option>
+                        <option value="05">協力社員</option>
+                        <option value="06">出向社員</option>
+                        <!--<label class="error" id="empDivCd"> </label><br>-->
+                        <!--<input class="two" type="text" name="empDivCd">-->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>入社年月日</td>
+                <td>
+                    <div>
+                        <label class="error" id="nyusyaYmd"> </label><br>
+                        <input class="number eight" type="text" name="nyusyaYmd"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>在職フラグ</td>
+                <td>
+                    <select id="empFlg" name="empFlg">
+                        <option value=" ">選んでください</option>
+                        <option value="1">在職</option>
+                        <option value="2">休業中</option>
+                        <option value="3">産休中</option>
+                        <option value="4">病気休暇中</option>
+                        <option value="9">退職</option>
+                    </select>
+                </td>
+                <td>所属部署コード</td>
+                <td>
+                    <div>
+                        <label class="error" id="departCd"> </label><br>
+                        <input class="two" type="text" name="departCd"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>退職年月日</td>
+                <td>
+                    <div>
+                        <label class="error" id="taisyokuYmd"> </label><br>
+                        <input class="number eight" type="text" name="taisyokuYmd"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>卒業大学</td>
+                <td>
+                    <div>
+                        <label class="error" id="gradColgNm"> </label><br>
+                        <input class="twenty" type="text" name="gradColgNm"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>卒業年月日</td>
+                <td>
+                    <div>
+                        <label class="error" id="gradYmd"> </label><br>
+                        <input class="number eight" type="text" name="gradYmd"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>専攻</td>
+                <td>
+                    <div>
+                        <label class="error" id="gradMajor"> </label><br>
+                        <input class="twenty" type="text" name="gradMajor"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>備考</td>
+                <td>
+                    <div>
+                        <label class="error" id="memo"> </label><br>
+                        <input class="twoHundred" type="text" name="memo"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>電話番号(中国)</td>
+                <td>
+                    <div>
+                        <label class="error" id="telNoCn"> </label><br>
+                        <input class="phoneCN fifteen" type="text" name="telNoCn" placeholder="130-0000-0000"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>住所(CN)</td>
+                <td>
+                    <div>
+                        <label class="error" id="addressCn"> </label><br>
+                        <input class="hundred" type="text" name="addressCn"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>在留カード番号</td>
+                <td>
+                    <div>
+                        <label class="error" id="resNo"> </label><br>
+                        <input class="twelve" type="text" name="resNo"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>在留資格</td>
+                <td>
+                    <div>
+                        <label class="error" id="resQua"> </label><br>
+                        <input class="hundred" type="text" name="resQua"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>個人番号</td>
+                <td>
+                    <div>
+                        <label class="error" id="myNo"> </label><br>
+                        <input class="twelve" type="text" name="myNo"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+                <td>雇用保険加入</td>
+                <td>
+                    <select id="empInsFlg" name="empInsFlg">
+                        <option value=" ">選んでください</option>
+                        <option value="0">未加入</option>
+                        <option value="1">加入</option>
+                    </select>
+                </td>
+                <td>雇用保険番号</td>
+                <td>
+                    <div>
+                        <label class="error" id="empInsNumber"> </label><br>
+                        <input class="twenty" type="text" name="empInsNumber"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>年金加入</td>
+                <td>
+                    <select id="penFlg" name="penFlg">
+                        <option value=" ">選んでください</option>
+                        <option value="0">未加入</option>
+                        <option value="1">加入</option>
+                    </select>
+                </td>
+                <td>年金番号</td>
+                <td>
+                    <div>
+                        <label class="error" id="penNumber"> </label><br>
+                        <input class="twenty" type="text" name="penNumber"
+                               onblur="checkInput(this)" onchange="clearError(this)">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer">
+        <button class="btn-menu" onclick="gotoMenu()">メニュー</button>
+        <button class="btn-logout" onclick="logout()">ログアウト</button>
+    </div>
+</div>
+<script th:src="@{/js/add_employee.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

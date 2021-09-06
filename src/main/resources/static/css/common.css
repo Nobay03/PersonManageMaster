@@ -1,0 +1,63 @@
+.container {
+    background-color: #d6f4fe;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.logo {
+    position: absolute;
+    width: 455px;
+    height: 10%;
+    top: 0px;
+    right: 0px;
+}
+
+.header {
+    background-color: #9bc2e6;
+    width: 100%;
+    height: 5%;
+    position: absolute;
+    top: 10%;
+    text-align: center;
+    display: table;
+}
+
+.footer {
+    background-color: #9bc2e6;
+    width: 100%;
+    height: 5%;
+    position: absolute;
+    bottom: 5%;
+    display: table;
+}
+
+.btn-menu {
+    position: absolute;
+    width: 105px;
+    height: 42px;
+    top: 2px;
+    left: 85%;
+}
+
+.btn-logout {
+    position: absolute;
+    width: 105px;
+    height: 42px;
+    top: 2px;
+    left: 93%;
+}
+
+h1 {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.btn-header {
+    position: absolute;
+    width: 105px;
+    height: 42px;
+    top: 2px;
+    left: 93%;
+}
+

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>社員基本情報</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}" href="../../static/css/common.css">
+    <link rel="stylesheet" th:href="@{/css/basic_information.css}" href="../../static/css/basic_information.css">
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <a th:href="@{/main}"><img th:src="@{/images/login-logo.png}" alt=""></a>
+    </div>
+    <div class="header">
+        <h1>基本情報</h1>
+        <button class="btn-header" onclick="updateInformation()">更新</button>
+    </div>
+    <div class="main-table">
+        <table id="tableList">
+            <tr>
+                <td>社員番号</td>
+                <td><input class="input-readonly" type="text" th:name="empNo" th:value="${employee.empNo}" readonly>
+                </td>
+                <td>社員氏名</td>
+                <td>
+                    <div>
+                        <label class="notnull" id="empNameKanji"> </label><br>
+                        <input class="input-notnull" type="text" onfocus="getOldValue(this.value)"
+                               onchange="changeIt(this)"
+                               th:name="empNameKanji"
+                               th:value="${employee.empNameKanji}">
+                    </div>
+                </td>
+                <td>社員ふりがな</td>
+                <td>
+                    <div>
+                        <label class="notnull" id="empNameFurigana"> </label><br>
+                        <input class="input-notnull" type="text" onfocus="getOldValue(this.value)"
+                               onchange="changeIt(this)"
+                               th:name="empNameFurigana"
+                               th:value="${employee.empNameFurigana}">
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td>社員名(ローマ字名)</td>
+                <td>
+                    <div>
+                        <label class="notnull" id="empNameRoma"> </label><br>
+                        <input class="input-notnull" type="text" onfocus="getOldValue(this.value)"
+                               onchange="changeIt(this)"
+                               th:name="empNameRoma"
+                               th:value="${employee.empNameRoma}">
+                    </div>
+                </td>
+                <td>会社コード</td>
+                <td>
+                    <div>
+                        <label class="notnull" id="companyCd"> </label><br>
+                        <input class="input-notnull" type="text" onfocus="getOldValue(this.value)"
+                               onchange="changeIt(this)"
+                               th:name="companyCd"
+                               th:value="${employee.companyCd}">
+                    </div>
+                </td>
+                <td>性別</td>
+                <td>
+                    <div>
+                        <label class="notnull" id="sexFlg"> </label><br>
+                        <input class="input-notnull" type="text" onfocus="getOldValue(this.value)"
+                                onchange="changeIt(this)"
+                                th:name="sexFlg"
+                                th:value="${employee.sexFlg}">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>生年月日</td>
+                <td>
+                    <div>
+                        <label class="notnull" id="birthdayYmd"> </label><br>
+                        <input class="input-notnull" type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)"
+                           th:name="birthdayYmd"
+                           th:value="${employee.birthdayYmd}">
+                    </div>
+                </td>
+                <td>電話番号</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="telNoJp"
+                           th:value="${employee.telNoJp}">
+                </td>
+                <td>PCメールアドレス</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="pcMail"
+                           th:value="${employee.pcMail}">
+                </td>
+            </tr>
+            <tr>
+                <td>携帯メールアドレス</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="telMail"
+                           th:value="${employee.telMail}">
+                </td>
+                <td>住所(JP)</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="addressJp"
+                           th:value="${employee.addressJp}"></td>
+                <td>社員区分コード</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="empDivCd"
+                           th:value="${employee.empDivCd}"></td>
+            </tr>
+            <tr>
+                <td>入社年月日</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="nyusyaYmd"
+                           th:value="${employee.nyusyaYmd}"></td>
+                <td>在職フラグ</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="empFlg"
+                           th:value="${employee.empFlg}">
+                </td>
+                <td>所属部署コード</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="departCd"
+                           th:value="${employee.departCd}"></td>
+            </tr>
+            <tr>
+                <td>退職年月日</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="taisyokuYmd"
+                           th:value="${employee.taisyokuYmd}"></td>
+                <td>卒業大学</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="gradColgNm"
+                           th:value="${employee.gradColgNm}"></td>
+                <td>卒業年月日</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="gradYmd"
+                           th:value="${employee.gradYmd}">
+                </td>
+            </tr>
+            <tr>
+                <td>専攻</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="gradMajor"
+                           th:value="${employee.gradMajor}"></td>
+                <td>備考</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="memo"
+                           th:value="${employee.memo}"></td>
+                <td>電話番号(中国)</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="telNoCn"
+                           th:value="${employee.telNoCn}">
+                </td>
+            </tr>
+            <tr>
+                <td>住所(CN)</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="addressCn"
+                           th:value="${employee.addressCn}"></td>
+                <td>在留カード番号</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="resNo"
+                           th:value="${employee.resNo}">
+                </td>
+                <td>在留資格</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="resQua"
+                           th:value="${employee.resQua}">
+                </td>
+            </tr>
+            <tr>
+                <td>個人番号</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="myNo"
+                           th:value="${employee.myNo}"></td>
+                <td>雇用保険加入</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="empInsFlg"
+                           th:value="${employee.empInsFlg}"></td>
+                <td>雇用保険番号</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)"
+                           th:name="empInsNumber"
+                           th:value="${employee.empInsNumber}"></td>
+            </tr>
+            <tr>
+                <td>年金加入</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="penFlg"
+                           th:value="${employee.penFlg}">
+                </td>
+                <td>年金番号</td>
+                <td><input type="text" onfocus="getOldValue(this.value)" onchange="changeIt(this)" th:name="penNumber"
+                           th:value="${employee.penNumber}"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer">
+        <button class="btn-menu" onclick="gotoMenu()">メニュー</button>
+        <button class="btn-logout" onclick="logout()">ログアウト</button>
+    </div>
+</div>
+<script th:src="@{/js/basic_information.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

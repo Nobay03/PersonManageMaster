@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>社員管理</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}" href="../../static/css/common.css">
+    <link rel="stylesheet" th:href="@{/css/member_management.css}" href="../../static/css/member_management.css">
+</head>
+
+<body>
+<div class="container">
+    <div class="logo">
+        <a th:href="@{/main}"><img th:src="@{/images/login-logo.png}" alt=""></a>
+    </div>
+    <div class="header">
+        <h1>社員管理</h1>
+    </div>
+    <div class="main">
+        <div class="body-head">
+            <span class="body-head-span">社員番号</span>
+            <span class="body-head-span"><input class="body-head-input" type="text"></span>
+            <span class="body-head-span">社員氏名</span>
+            <span class="body-head-span"><input class="body-head-input" type="text"></span>
+            <span class="body-head-span-btn"><button class="body-head-btn" onclick="searchEmployee()">检索</button></span>
+            <span class="body-head-span-btn"><button class="body-head-btn" onclick="addEmployee()">新規</button></span>
+        </div>
+        <div class="body-table">
+            <table id="main-table">
+                <thead>
+                <tr>
+                    <th class="table-td-no">No</th>
+                    <th class="table-td-empNo">社員番号</th>
+                    <th>社員氏名</th>
+                    <th class="table-td-detail">詳細</th>
+                </tr>
+                </thead>
+                <tbody id="table-body">
+                <tr th:each="employee,stat:${employees}">
+                    <td class="table-td-no" th:text="${stat.count}"></td>
+                    <td class="table-td-empNo" th:text="${employee.empNo}"></td>
+                    <td th:text="${employee.empNameKanji}"></td>
+                    <td class="table-td-detail">
+                        <button th:onclick="getDetail([[${employee.empNo}]])">詳細</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="footer">
+        <button class="btn-menu" onclick="gotoMenu()">メニュー</button>
+        <button class="btn-logout" onclick="logout()">ログアウト</button>
+    </div>
+</div>
+<script th:src="@{/js/member_management.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登録</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+<div class="container">
+    <div class="background-img">
+        <img src="/images/login.jpg" id="img1">
+        <img src="/images/login-logo.png" id="img2">
+        <div class="login-title">
+            <h1>社内管理システム</h1>
+        </div>
+        <br>
+        <form class="form-sign" method="post" th:action="@{/login}" onsubmit="return check()">
+            <label style="color: red" th:text="${msg}"></label>
+            <br>
+            ユーザーID&nbsp;&nbsp;
+            <input type="text"
+                   class="form-control"
+                   name="username"
+                   id="username"
+                   placeholder="ユーザーID"
+                   onfocus="clearNameError()"
+                   >
+            <br>
+            <span id="nameError"></span>
+            <br>
+            パスワード&nbsp;&nbsp;
+            <input type="password"
+                   class="form-control"
+                   name="password"
+                   id="password"
+                   placeholder="パスワード"
+                   onfocus="clearPasswordError()">
+            <br>
+            <span id="passwordError"></span>
+            <br>
+            <button class="btn-login" type="submit">登録</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn-clear" type="reset">クリア</button>
+        </form>
+    </div>
+</div>
+<script th:src="@{/js/login.js}"></script>
+</body>
+</html>
